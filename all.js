@@ -3,6 +3,7 @@ import { C3_render } from './chart.js'
 
 let cities = ['台北', '台中', '高雄']
 
+const addForm = document.querySelector('.addPanel__form')
 const spotCitySelect = document.querySelector('.form__spotCitySelect')
 const searchCitySelect = document.querySelector('.citySearch__select')
 const addBtn = document.querySelector('.form__addBtn')
@@ -124,6 +125,7 @@ async function main() {
             ticketCountHandler(data)
             render(data)
             C3_render(cityProportion(data))
+            addForm.reset()
           }
         })
         .catch(() => {
