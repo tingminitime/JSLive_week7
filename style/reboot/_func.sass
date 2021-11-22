@@ -1,0 +1,4 @@
+@function font($level: 0)
+  @if $level < 0
+    $level: 0
+  @return $baseFontSize + $fontSizeLevel * round($level)

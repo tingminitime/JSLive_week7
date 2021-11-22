@@ -1,0 +1,237 @@
+.addPanel
+  display: flex
+  justify-content: center
+  padding: 60px 95px
+  max-width: 920px
+  margin: 120px auto 100px auto
+  box-shadow: 0 3px 6px #00000029
+  border-radius: 12px
+  +pad
+    flex-direction: column
+    align-items: center
+    box-shadow: none
+    border-radius: 0
+    padding: 60px 20px
+    margin: 0 auto 100px auto
+  &__img
+    display: flex
+    flex-direction: column
+    +pad
+      & :nth-child(2)
+        display: none
+    & :first-child
+      margin-bottom: 20px
+  &__form
+    max-width: 350px
+    width: 100%
+    display: flex
+    flex-direction: column
+    +pad
+      max-width: 100%
+
+.form
+  &__title
+    display: flex
+    align-items: center
+    border-bottom: 3px solid $mainGreen
+    margin-bottom: 32px
+    .icon-plus
+      width: 20px
+      height: 20px
+  &__titleText
+    padding: 0 6px
+    +font(2, 700)
+    color: $mainGreen
+    line-height: 1.5
+  &__label
+    display: flex
+    margin-bottom: 16px
+    +pad
+      flex-direction: column
+  &__labelText
+    flex: 4
+    padding: 8px 0
+    +font(0, 700)
+    color: $mainGreen
+  &__input, &__select, &__textarea
+    flex: 8
+    width: 100%
+    +font(0, normal)
+    padding: 8px 12px
+    border: none
+    background-color: $lightGray
+    border-bottom: 2px solid $mainGreen
+  &__input
+    &::placeholder
+      color: $gray
+  &__select
+    color: $gray
+    appearance: none
+    background-image: url(../img/sort-solid.svg)
+    background-repeat: no-repeat
+    background-position: right 12px center
+    background-size: 12px 12px
+  &__addBtn
+    align-self: flex-end
+    padding: 10px 40px
+    +font(1, normal)
+    background-color: $mainGreen
+    color: #fff
+    border: none
+    border-radius: 5px
+    cursor: pointer
+    +pad
+      align-self: center
+    &:hover
+      background-color: lighten($mainGreen, 5)
+  &__description
+    resize: none
+
+.content--background
+  background-color: $lightGray
+
+.content
+  max-width: 1110px
+  padding-bottom: 120px
+  margin: 0 auto
+
+.cityInfo
+  display: flex
+  justify-content: space-between
+  align-items: flex-start
+  padding: 44px 0
+  +pad
+    flex-direction: column
+    align-items: center
+
+.citySearch
+  width: 100%
+  max-width: 730px
+  display: flex
+  align-items: center
+  padding: 0 90px
+  +pad
+    padding: 0 20px
+    justify-content: center
+  &__select
+    padding: 8px 12px
+    width: \max(27.5%, 255px)
+    margin-right: 2.5%
+    +font(0, normal)
+    color: $gray
+    border: 1px solid #CED4DA
+    border-radius: 4px
+    appearance: none
+    background-image: url(../img/sort-solid.svg)
+    background-repeat: no-repeat
+    background-position: right 12px center
+    background-size: 12px 12px
+    +pad
+      width: auto
+      flex: 8
+  &__ticketCount
+    color: $gray
+    +pad
+      flex: 4
+      min-width: 145px
+      text-align: right
+
+.chart
+  width: \min(100%, 380px)
+  display: flex
+  justify-content: center
+  +pad
+    margin-top: 44px
+
+.c3-chart-arcs-title
+  fill: #4B4B4B
+
+.c3-legend-item
+  fill: #4B4B4B
+
+.spotList
+  display: flex
+  flex-wrap: wrap
+  +pad
+    padding: 0 20px
+  &__item
+    width: 31.3333%
+    margin: 0 1% 40px 1%
+    box-shadow: 0 3px 6px #00000029
+    +pad
+      width: 100%
+      margin: 0 0 40px 0
+    &:hover
+      .ticket__spotImg img
+        transform: scale(1.2)
+
+.ticket
+  &__head
+    position: relative
+    cursor: pointer
+  &__spotImg
+    overflow: hidden
+    transition: transform .2s
+  &__city, &__score
+    position: absolute
+    color: #fff
+    border-radius: 0 4px 4px 0
+  &__city
+    left: 0
+    top: -12px
+    +font(1, normal)
+    padding: 8px 20px
+    background-color: $lightGreen
+  &__score
+    width: 40px
+    left: 0
+    bottom: 0
+    transform: translateY(50%)
+    line-height: 1.5
+    text-align: center
+    padding: 5px 8px
+    background-color: $mainGreen
+  &__body
+    padding: 0 20px 15px 20px
+  &__title
+    margin: 20px 0
+    +font(2, 500)
+    line-height: 1.5
+    color: $mainGreen
+    border-bottom: 2px solid $mainGreen
+  &__introText
+    height: 145px
+    margin-bottom: 32px
+    line-height: 1.5
+    color: $gray
+  &__info
+    display: flex
+    justify-content: space-between
+    color: $mainGreen
+    +large
+      flex-direction: column
+    +pad
+      flex-direction: row
+  &__count
+    display: flex
+    align-items: center
+    +large
+      margin-bottom: 8px
+    +pad
+      margin-bottom: 0
+  &__noteIcon
+    width: 20px
+    height: 20px
+  &__countText
+    padding: 0 6px
+    +font(0, 500)
+  &__price
+    display: flex
+    align-items: center
+    +large
+      align-self: flex-end
+    +pad
+      align-items: center
+  &__amount
+    +font(4, 500)
+    margin-left: 4px

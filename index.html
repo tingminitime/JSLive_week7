@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="X-UA-Compatible"
+    content="IE=edge"
+  >
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+  <title>商品篩選器</title>
+  <link
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css'
+    integrity='sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ=='
+    crossorigin='anonymous'
+  />
+  <link
+    rel="stylesheet"
+    href="style/all.css"
+  >
+</head>
+
+<body>
+  <div class="addPanel">
+    <div class="addPanel__img">
+      <img
+        src="img/banner1.png"
+        alt="intro image 1"
+      >
+      <img
+        src="img/banner2.png"
+        alt="intro image 2"
+      >
+    </div>
+    <form class="addPanel__form">
+      <div class="form__title">
+        <img
+          src="img/plus-circle-solid.svg"
+          class="icon-plus"
+          alt="plus icon"
+        >
+        <legend class="form__titleText">新增旅遊套票</legend>
+      </div>
+      <fieldset class="form__fieldset">
+        <label class="form__label">
+          <div class="form__labelText">套票名稱</div>
+          <input
+            type="text"
+            class="form__input"
+            placeholder="請填寫套票名稱"
+            data-prop="name"
+            data-name="套票名稱"
+            required
+          >
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">圖片網址</div>
+          <input
+            type="text"
+            class="form__input form__input--img"
+            placeholder="請填寫圖片網址"
+            data-prop="imgUrl"
+            data-name="圖片網址"
+            required
+          >
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">景點地區</div>
+          <select
+            name="spotCity"
+            class="form__select form__spotCitySelect"
+            data-prop="area"
+            data-name="景點地區"
+            required
+          >
+            <!-- 載入資料 -->
+            <!-- <option
+              value="請選擇請點地區"
+              selected
+              disabled
+              hidden
+            >請選擇景點地區</option>
+            <option value="台北市">台北市</option>
+            <option value="台中市">台中市</option>
+            <option value="高雄市">高雄市</option> -->
+          </select>
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">套票金額</div>
+          <input
+            type="number"
+            class="form__input"
+            placeholder="請填寫套票金額"
+            data-prop="price"
+            data-name="套票金額"
+            required
+          >
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">套票組數</div>
+          <input
+            type="number"
+            class="form__input"
+            min="1"
+            placeholder="請填寫套票組數"
+            data-prop="group"
+            data-name="套票組數"
+            required
+          >
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">套票星級</div>
+          <input
+            type="number"
+            class="form__input form__input--rate"
+            name="score"
+            max="10"
+            min="1"
+            placeholder="請填寫套票星級"
+            data-prop="rate"
+            data-name="套票星級"
+            required
+          >
+        </label>
+        <label class="form__label">
+          <div class="form__labelText">套票描述</div>
+          <textarea
+            class="form__textarea form__description"
+            name="description"
+            rows="5"
+            maxlength="100"
+            placeholder="請填寫套票描述 (限 100 字)"
+            data-prop="description"
+            data-name="套票描述"
+            required
+          ></textarea>
+        </label>
+      </fieldset>
+      <button
+        type="button"
+        class="form__addBtn"
+      >新增套票</button>
+    </form>
+  </div>
+  <div class="content--background">
+    <div class="content">
+      <div class="cityInfo">
+        <div class="citySearch">
+          <select
+            name="city"
+            class="citySearch__select"
+          >
+            <!-- 載入資料 -->
+          </select>
+          <p class="citySearch__ticketCount"></p>
+        </div>
+        <div
+          id="chart"
+          class="chart"
+        >
+        </div>
+      </div>
+      <ul class="spotList">
+        <!-- 載入資料 -->
+      </ul>
+    </div>
+  </div>
+
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js'
+    integrity='sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=='
+    crossorigin='anonymous'
+  ></script>
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.7/d3.min.js'
+    integrity='sha512-pvyDOCsMWEqixJpLPypiZkpjuIywuxhZImCDncJ8AWOzt9IWPv5GDEAVEqp2zhPmpbUEoQ756B3kEV30+V04OA=='
+    crossorigin='anonymous'
+  ></script>
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js'
+    integrity='sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw=='
+    crossorigin='anonymous'
+  ></script>
+  <script
+    type="module"
+    src="api.js"
+  ></script>
+  <script
+    type="module"
+    src="chart.js"
+  ></script>
+  <script
+    type="module"
+    src="all.js"
+  ></script>
+</body>
+
+</html>
